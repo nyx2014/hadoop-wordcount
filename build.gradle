@@ -1,0 +1,49 @@
+//plugins {
+//    id 'java'
+//}
+
+group 'com.lsr'
+version '1.0-DEMO'
+apply plugin: 'java'
+apply plugin: 'scala'
+//apply plugin: 'application'
+//mainClassName = 'WordCount'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/scala']
+        }
+        java {
+            srcDirs = ['src/main/java']
+        }
+
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    /* scala */
+    compile group: 'org.scala-lang', name: 'scala-library', version: '2.12'
+    compile group: 'org.scala-lang', name: 'scala-compiler', version: '2.12'
+    compile group: 'org.scala-lang', name: 'scalap', version: '2.12'
+    /* spark */
+    compile group: 'org.apache.spark', name: 'spark-core_2.11', version: '2.2.0'
+    /* hadoop */
+    compile group: 'org.apache.hadoop', name: 'hadoop-client', version: '2.7.3'
+
+// https://mvnrepository.com/artifact/org.apache.spark/spark-streaming
+    compileOnly group: 'org.apache.spark', name: 'spark-streaming_2.10', version: '2.2.2'
+// https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-twitter
+    compile group: 'org.apache.spark', name: 'spark-streaming-twitter_2.11', version: '1.6.3'
+    // https://mvnrepository.com/artifact/org.apache.spark/spark-sql
+    compile group: 'org.apache.spark', name: 'spark-sql_2.11', version: '2.3.1'
+// https://mvnrepository.com/artifact/org.apache.spark/spark-mllib
+    runtime group: 'org.apache.spark', name: 'spark-mllib_2.11', version: '2.3.1'
+}
